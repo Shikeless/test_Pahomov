@@ -9,7 +9,7 @@ export default () => (
     <Switch>
       <Route exact path="/login" component={Login} />
       <PrivateRoute exact path="/products" component={Products} />
-      <Redirect path="/" exact to="/login" />
+      <Redirect to="/login" />
     </Switch>
   </BrowserRouter>
 );
