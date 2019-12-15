@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/test_Pahomov/precache-manifest.224d3acd85b5141bd621c8961a6f00d3.js"
+  "/test_Pahomov/precache-manifest.8497f7e515bb07909fe183f18abe104b.js"
 );
 
 self.addEventListener('message', (event) => {

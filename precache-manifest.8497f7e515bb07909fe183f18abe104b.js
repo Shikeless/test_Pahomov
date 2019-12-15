@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "896ffa595474f57868ef0c06c73b7510",
+    "revision": "e8e96eca40b6f9779fb7c3ac7f39c07d",
     "url": "/test_Pahomov/index.html"
   },
   {
-    "revision": "0859ae60340aa95b0702",
+    "revision": "bab4ff7840d2bbd66077",
     "url": "/test_Pahomov/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/test_Pahomov/static/js/2.709419e3.chunk.js.LICENSE"
   },
   {
-    "revision": "0859ae60340aa95b0702",
-    "url": "/test_Pahomov/static/js/main.990a142c.chunk.js"
+    "revision": "bab4ff7840d2bbd66077",
+    "url": "/test_Pahomov/static/js/main.0fb8eb4d.chunk.js"
   },
   {
     "revision": "15ab4dfcc0a0cb75c1a1",

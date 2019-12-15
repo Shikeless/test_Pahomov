@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/test_Pahomov/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/test_Pahomov/static/js/main.990a142c.chunk.js",
-    "main.js.map": "/test_Pahomov/static/js/main.990a142c.chunk.js.map",
+    "main.js": "/test_Pahomov/static/js/main.0fb8eb4d.chunk.js",
+    "main.js.map": "/test_Pahomov/static/js/main.0fb8eb4d.chunk.js.map",
     "runtime-main.js": "/test_Pahomov/static/js/runtime-main.adafb4d4.js",
     "runtime-main.js.map": "/test_Pahomov/static/js/runtime-main.adafb4d4.js.map",
     "static/js/2.709419e3.chunk.js": "/test_Pahomov/static/js/2.709419e3.chunk.js",
     "static/js/2.709419e3.chunk.js.map": "/test_Pahomov/static/js/2.709419e3.chunk.js.map",
     "index.html": "/test_Pahomov/index.html",
-    "precache-manifest.224d3acd85b5141bd621c8961a6f00d3.js": "/test_Pahomov/precache-manifest.224d3acd85b5141bd621c8961a6f00d3.js",
+    "precache-manifest.8497f7e515bb07909fe183f18abe104b.js": "/test_Pahomov/precache-manifest.8497f7e515bb07909fe183f18abe104b.js",
     "service-worker.js": "/test_Pahomov/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/test_Pahomov/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.709419e3.chunk.js.LICENSE": "/test_Pahomov/static/js/2.709419e3.chunk.js.LICENSE",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.adafb4d4.js",
     "static/js/2.709419e3.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.990a142c.chunk.js"
+    "static/js/main.0fb8eb4d.chunk.js"
   ]
 }
