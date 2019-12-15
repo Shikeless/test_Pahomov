@@ -4,3 +4,5 @@ export const authRequest = createAction("AUTH/REQUEST");
 export const authSuccess = createAction("AUTH/SUCCESS");
 
 export const verRequest = createAction("VER/REQUEST");
+
+export const logout = createAction("LOGOUT");

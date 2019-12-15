@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 import { combineReducers } from "redux";
-import { productsRequest, productsSuccess } from "./actions";
+import { productsSuccess } from "./actions";
 
 const products = handleActions(
   {

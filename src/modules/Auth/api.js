@@ -21,7 +21,6 @@ export const fetchAuth = async data => {
 
 export const fetchVer = async data => {
   const token = load("jwt");
-  console.log("veryfying: " + token);
   //Имитируем таймаут фетч запроса
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   await sleep(500);

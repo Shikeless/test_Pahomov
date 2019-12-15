@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { Form, Field } from "react-final-form";
-import { TextField, Checkbox } from "final-form-material-ui";
 import {
   Box,
   Typography,
@@ -13,41 +11,21 @@ import {
   TableBody,
   Hidden,
   Grid,
-  Paper
+  Button
 } from "@material-ui/core";
 import { AddCircle, Cancel } from "@material-ui/icons";
-import validator from "validator";
 import { productsRequest } from "../../modules/Products/actions";
+import { logout } from "../../modules/Auth/actions";
 import { getIsLoading } from "../../modules/App/app";
 import { getProducts } from "../../modules/Products";
 import Loading from "../Loading";
-import im from "../../icons/Ellipse.png";
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const titles = {
-  name: "Наименование",
-  count: "Кол-во",
-  price: "ена за ед, ₽",
-  sum: "Стоимость, ₽"
-};
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9)
-];
 
 const MapStateToProps = state => ({
   products: getProducts(state),
   isLoading: getIsLoading(state)
 });
 
-const MapDispatchToProps = { productsRequest };
+const MapDispatchToProps = { productsRequest, logout };
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -100,13 +78,30 @@ const useStyles = makeStyles(theme => ({
   },
   cancel: {
     color: "#C6213C"
+  },
+  logout: {
+    position: "absolute",
+    top: "20px",
+    right: 0
   }
 }));
+
+const titles = {
+  name: "Наименование",
+  count: "Кол-во",
+  price: "ена за ед, ₽",
+  sum: "Стоимость, ₽"
+};
 
 function Products(props) {
   useEffect(() => {
     props.productsRequest();
   }, []);
+
+  const logoutButton = () => {
+    window.localStorage.removeItem("jwt");
+    props.logout();
+  };
 
   const classes = useStyles();
 
@@ -115,6 +110,15 @@ function Products(props) {
   }
   return (
     <div className={classes.root}>
+      <Button
+        onClick={() => {
+          logoutButton();
+        }}
+        className={classes.logout}
+        variant="contained"
+      >
+        Default
+      </Button>
       <Box className={classes.titleBox}>
         <Typography variant="h6" component="h6" className={classes.title}>
           Результаты расчёта
@@ -143,6 +147,7 @@ function Products(props) {
                   <StyledTableCell className={classes.imgColumn}>
                     <img
                       src={require(`../../icons/${item.img}`)}
+                      alt=""
                       className={classes.smallLogo}
                     ></img>
                   </StyledTableCell>
@@ -163,7 +168,7 @@ function Products(props) {
         <Grid container spacing={4}>
           {props.products &&
             props.products.map((item, index) => (
-              <Grid item xs={12} sm={12}>
+              <Grid key={index} item xs={12} sm={12}>
                 <Box>
                   <Table
                     key={index}
@@ -176,6 +181,7 @@ function Products(props) {
                           <img
                             src={require(`../../icons/${item.img}`)}
                             className={classes.mediumLogo}
+                            alt=""
                           ></img>
                         </StyledTableCell>
                       </TableRow>

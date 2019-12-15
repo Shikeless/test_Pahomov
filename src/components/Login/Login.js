@@ -12,47 +12,16 @@ import {
   FormControlLabel
 } from "@material-ui/core";
 import { LockOutlined } from "@material-ui/icons";
-import validator from "validator";
 import { authRequest, verRequest } from "../../modules/Auth/actions";
 import { getIsAuthorized } from "../../modules/Auth/auth";
 import { load } from "../../localStorage";
+import { validate } from "../../helpers/validate";
 
 const MapStateToProps = state => ({
   isAuthorized: getIsAuthorized(state)
 });
 
 const MapDispatchToProps = { authRequest, verRequest };
-
-const validate = values => {
-  const errors = {};
-  if (values.password) {
-    if (/\s/.test(values.password)) {
-      errors.password = "Поле не должно содержать пробелов";
-    }
-    if (!validator.isAlphanumeric(values.password)) {
-      errors.password = "Поле должно содержать только цифры и латинские буквы";
-    }
-    if (values.password.length < 5) {
-      errors.password = "Поле должно состоять минимум из 5 символов";
-    }
-    if (validator.isEmpty(values.password)) {
-      errors.password = "Поле обязательное для заполнения";
-    }
-  } else {
-    errors.password = "Поле обязательное для заполнения";
-  }
-  if (values.email) {
-    if (validator.isEmpty(values.email)) {
-      errors.email = "Поле обязательное для заполнения";
-    }
-    if (!validator.isEmail(values.email)) {
-      errors.email = "Введите корректный email";
-    }
-  } else {
-    errors.email = "Поле обязательное для заполнения";
-  }
-  return errors;
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,11 +33,7 @@ const useStyles = makeStyles(theme => ({
       right: "0",
       margin: "auto",
       width: "90%",
-      height: "100%",
-      border: "solid 1px black",
-      display: "block",
-
-      alignItems: "center"
+      height: "90%"
     },
     [theme.breakpoints.up("sm")]: {
       position: "absolute",
@@ -78,13 +43,18 @@ const useStyles = makeStyles(theme => ({
       right: "0",
       margin: "auto",
       width: "380px",
-      height: "100%",
-      border: "solid 1px black"
+      height: "541px"
     }
+  },
+  footer: {
+    color: "rgba(0, 0, 0, 0.54)",
+    position: "absolute",
+    bottom: 0,
+    width: "100%"
   },
   button: {
     background: "#2196F3",
-    marginBottom: "21px",
+    marginBottom: "10px",
     "&:hover": {
       background: "#2F80ED"
     }
@@ -99,7 +69,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "50%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: "72px",
+    marginBottom: "10px"
   },
   icon: {
     color: "white"
@@ -110,14 +82,20 @@ const useStyles = makeStyles(theme => ({
   alignRight: {
     float: "right"
   },
-  gr: {
-    backgroundColor: "#E10050"
+  wrapper: {
+    display: "block",
+    wordWrap: "break-word"
+  },
+  ref: {
+    color: "#2196F3",
+    "&:hover": {
+      textDecoration: "underline"
+    }
   }
 }));
 
 function Login(props) {
   useEffect(() => {
-    console.log(props);
     if (load("jwt") !== null) props.verRequest();
   });
 
@@ -126,6 +104,7 @@ function Login(props) {
   };
 
   const classes = useStyles();
+
   if (props.isAuthorized) return <Redirect to="/products" />;
   return (
     <Box className={classes.root}>
@@ -134,7 +113,6 @@ function Login(props) {
           <LockOutlined className={classes.icon} />
         </Box>
       </Box>
-
       <Typography
         variant="h5"
         align="center"
@@ -155,7 +133,6 @@ function Login(props) {
               fullWidth
               required
               component={TextField}
-              label="Outlined"
               variant="outlined"
               type="email"
               label="Почта"
@@ -165,7 +142,6 @@ function Login(props) {
               fullWidth
               required
               component={TextField}
-              label="Outlined"
               variant="outlined"
               type="password"
               label="Пароль"
@@ -184,7 +160,6 @@ function Login(props) {
               }
             />
             <Button
-              className={classes.formElement}
               className={classes.button}
               variant="contained"
               fullWidth
@@ -196,16 +171,36 @@ function Login(props) {
           </form>
         )}
       />
-      <Grid container wrap="nowrap" spacing={0}>
-        <Grid className={classes.gr} item xs={4}>
-          <Typography align="left">12312</Typography>
+      <Grid container wrap="wrap" spacing={0}>
+        <Grid className={classes.gr} item xs={5}>
+          <Typography
+            className={classes.ref}
+            variant="caption"
+            component="p"
+            align="left"
+          >
+            Забыли пароль?
+          </Typography>
         </Grid>
-        <Grid className={classes.gr} item xs={8} zeroMinWidth>
-          <Typography align="right">
-            1233333333333333333333333333333333333333333333333335111111111111111111
+        <Grid className={classes.gr} item xs={7}>
+          <Typography
+            className={classes.ref}
+            variant="caption"
+            component="p"
+            align="right"
+          >
+            Еще нет аккаунта? Регистрация
           </Typography>
         </Grid>
       </Grid>
+      <Typography
+        className={classes.footer}
+        align="center"
+        variant="caption"
+        component="p"
+      >
+        Copyright© Ваш сайт 2019.
+      </Typography>
     </Box>
   );
 }
